@@ -1,0 +1,23 @@
+{
+  "name": "tarea2-cv-online",
+  "version": "1.0.0",
+  "description": "CV en linea con Node.js, Express y formulario de contacto",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "express",
+    "cv",
+    "formsubmit"
+  ],
+  "author": "Carlos Moreno",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
