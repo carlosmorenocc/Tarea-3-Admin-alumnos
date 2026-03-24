@@ -1,0 +1,51 @@
+<h1>Lista de Alumnos</h1>
+
+{{#if errores}}
+<div class="alert alert-danger">
+  <ul>
+    {{#each errores}}
+    <li>{{this}}</li>
+    {{/each}}
+  </ul>
+</div>
+{{/if}}
+
+{{#if exito}}
+<div class="alert alert-success">
+  {{exito}}
+</div>
+{{/if}}
+
+<a href="/alumnos/create" class="btn btn-primary mb-3">Nuevo Alumno</a>
+
+{{#if alumnos.length}}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Expediente</th>
+      <th>Semestre</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each alumnos}}
+    <tr>
+      <td>{{this.nombre}}</td>
+      <td>{{this.correo}}</td>
+      <td>{{this.expediente}}</td>
+      <td>{{this.semestre}}</td>
+      <td>
+        <a href="/alumnos/{{this._id}}/edit" class="btn btn-warning btn-sm">Editar</a>
+        <form action="/alumnos/{{this._id}}/delete" method="POST" style="display:inline;">
+          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este alumno?')">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+<p>No hay alumnos registrados.</p>
+{{/if}}
