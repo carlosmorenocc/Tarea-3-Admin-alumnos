@@ -9,8 +9,8 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Conexión a MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
+// Conectar a MongoDB
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/alumnosDB', {
   serverSelectionTimeoutMS: 5000
 })
   .then(() => {
@@ -20,10 +20,13 @@ mongoose.connect(process.env.MONGODB_URI, {
     console.log('Error al conectar a MongoDB:', error.message);
   });
 
-// Configurar Handlebars
+// Handlebars
 app.engine('hbs', engine({
   extname: '.hbs',
-  defaultLayout: 'main'
+  defaultLayout: 'main',
+  helpers: {
+    eq: (a, b) => a === b
+  }
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
@@ -36,8 +39,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta de prueba
 app.get('/', (req, res) => {
-  res.send('Servidor funcionando correctamente');
+  res.redirect('/alumnos');
 });
+
+// Rutas
+app.use('/alumnos', require('./routes/alumnos'));
 
 // Levantar servidor
 app.listen(PORT, () => {
