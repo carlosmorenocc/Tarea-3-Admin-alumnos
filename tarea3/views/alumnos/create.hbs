@@ -1,0 +1,47 @@
+<h1>Crear Nuevo Alumno</h1>
+
+{{#if errores}}
+<div class="alert alert-danger">
+  <ul>
+    {{#each errores}}
+    <li>{{this}}</li>
+    {{/each}}
+  </ul>
+</div>
+{{/if}}
+
+<form action="/alumnos" method="POST">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="correo" class="form-label">Correo Electrónico</label>
+    <input type="email" class="form-control" id="correo" name="correo" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="expediente" class="form-label">Número de Expediente</label>
+    <input type="text" class="form-control" id="expediente" name="expediente" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="semestre" class="form-label">Semestre</label>
+    <select class="form-select" id="semestre" name="semestre" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Crear Alumno</button>
+  <a href="/alumnos" class="btn btn-secondary">Cancelar</a>
+</form>

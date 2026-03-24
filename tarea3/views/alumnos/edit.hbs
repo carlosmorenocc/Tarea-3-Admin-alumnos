@@ -1,0 +1,49 @@
+<h1>Editar Alumno</h1>
+
+{{#if errores}}
+<div class="alert alert-danger">
+  <ul>
+    {{#each errores}}
+    <li>{{this}}</li>
+    {{/each}}
+  </ul>
+</div>
+{{/if}}
+
+<form action="/alumnos/{{alumno._id}}" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" value="{{alumno.nombre}}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="correo" class="form-label">Correo Electrónico</label>
+    <input type="email" class="form-control" id="correo" name="correo" value="{{alumno.correo}}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="expediente" class="form-label">Número de Expediente</label>
+    <input type="text" class="form-control" id="expediente" name="expediente" value="{{alumno.expediente}}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="semestre" class="form-label">Semestre</label>
+    <select class="form-select" id="semestre" name="semestre" required>
+      <option value="1" {{#if (eq alumno.semestre 1)}}selected{{/if}}>1</option>
+      <option value="2" {{#if (eq alumno.semestre 2)}}selected{{/if}}>2</option>
+      <option value="3" {{#if (eq alumno.semestre 3)}}selected{{/if}}>3</option>
+      <option value="4" {{#if (eq alumno.semestre 4)}}selected{{/if}}>4</option>
+      <option value="5" {{#if (eq alumno.semestre 5)}}selected{{/if}}>5</option>
+      <option value="6" {{#if (eq alumno.semestre 6)}}selected{{/if}}>6</option>
+      <option value="7" {{#if (eq alumno.semestre 7)}}selected{{/if}}>7</option>
+      <option value="8" {{#if (eq alumno.semestre 8)}}selected{{/if}}>8</option>
+      <option value="9" {{#if (eq alumno.semestre 9)}}selected{{/if}}>9</option>
+      <option value="10" {{#if (eq alumno.semestre 10)}}selected{{/if}}>10</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Actualizar Alumno</button>
+  <a href="/alumnos" class="btn btn-secondary">Cancelar</a>
+</form>

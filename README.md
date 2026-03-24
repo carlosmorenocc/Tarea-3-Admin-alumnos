@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# Entrega-Tareas-Servidor-P2026
+Espacio dedicado a la entrega de tareas y actividades de la clase de Tecnologías de Desarrollo en el Servidor.
+=======
 # Tarea-3-Admin-alumnos
 
 # Objetivo
@@ -162,3 +166,4 @@ Crear una carpeta llamada "tarea3" en la nueva rama
 Insertar los archivos de la tarea dentro de la carpeta tarea3 (un archivo por cada ejercicio)
 Esta tarea se desarrolla en pair programming. Ambos deben subir su propio codigo a su propio repositorio. La entrega es individual.
  
+>>>>>>> origin/juanpablo-backend
