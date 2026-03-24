@@ -1,38 +1,31 @@
-# Tarea-3-Admin-alumnos
+# Aplicación CRUD de Alumnos
 
-Aplicación web CRUD de gestión de alumnos:
-- create/read/update/delete con eliminación lógica (`isDeleted`).
-- UI con Express Handlebars.
-- Base de datos MongoDB.
+Esta es una aplicación web para administrar alumnos usando Node.js, Express, MongoDB y Express Handlebars.
 
+## Requisitos
 
-# Instrucciones para ejecutar la aplicación
-1. Clonar el repositorio y moverse al proyecto:
-   ```bash
-   git clone <URL-del-repo>
-   cd tarea3
-   ```
-2. Instalar dependencias:
-   ```bash
-   npm install
-   ```
-3. Configurar MongoDB en `.env` (opcional):
-   ```bash
-   MONGODB_URI=mongodb://localhost:27017/alumnosDB
-   PORT=3000
-   ```
-4. Ejecutar app en desarrollo:
-   ```bash
-   npm run dev
-   ```
-   o en producción:
-   ```bash
-   npm start
-   ```
-5. Abrir `http://localhost:3000` y verificar que se redirige a `/alumnos`.
+- Node.js
+- MongoDB
 
-6. Uso:
-   - Nuevo Alumno: `/alumnos/create`
-   - Editar: `/alumnos/:id/edit`
-   - Eliminar lógico: boton borrar
+## Instalación
 
+1. Clona el repositorio.
+2. Instala las dependencias: `npm install`
+3. Asegúrate de que MongoDB esté corriendo en `mongodb://localhost:27017/alumnosDB`
+4. Ejecuta la aplicación: `npm start`
+5. Abre tu navegador en `http://localhost:3000`
+
+## Funcionalidades
+
+- Listar alumnos
+- Crear nuevo alumno
+- Editar alumno existente
+- Eliminar alumno lógicamente (no se muestra en la lista)
+
+## Estructura del Proyecto
+
+- `app.js`: Archivo principal del servidor
+- `models/Alumno.js`: Modelo de datos para Alumno
+- `routes/alumnos.js`: Rutas para operaciones CRUD
+- `views/`: Plantillas Handlebars
+- `public/`: Archivos estáticos (CSS, JS, etc.)

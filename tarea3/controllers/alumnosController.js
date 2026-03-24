@@ -3,8 +3,10 @@ const Alumno = require('../models/Alumno');
 exports.getAlumnos = async (req, res) => {
   try {
     const alumnos = await Alumno.find({ isDeleted: false }).lean();
+    console.log('Encontrados', alumnos.length, 'alumnos');
     res.render('alumnos/index', { alumnos });
   } catch (error) {
+    console.error('Error al obtener alumnos:', error.message);
     res.status(500).send('Error al obtener alumnos');
   }
 };
@@ -15,10 +17,13 @@ exports.showCreateForm = (req, res) => {
 
 exports.createAlumno = async (req, res) => {
   try {
+    console.log('Creando alumno con datos:', req.body);
     const nuevoAlumno = new Alumno(req.body);
     await nuevoAlumno.save();
+    console.log('Alumno creado con ID:', nuevoAlumno._id);
     res.redirect('/alumnos');
   } catch (error) {
+    console.error('Error al crear alumno:', error.message);
     res.render('alumnos/create', { errores: ['Error al crear alumno'] });
   }
 };
@@ -46,9 +51,12 @@ exports.updateAlumno = async (req, res) => {
 
 exports.deleteAlumno = async (req, res) => {
   try {
+    console.log('Eliminando alumno ID:', req.params.id);
     await Alumno.findByIdAndUpdate(req.params.id, { isDeleted: true });
+    console.log('Alumno marcado como eliminado');
     res.redirect('/alumnos');
   } catch (error) {
+    console.error('Error al eliminar alumno:', error.message);
     res.status(500).send('Error al eliminar alumno');
   }
 };
