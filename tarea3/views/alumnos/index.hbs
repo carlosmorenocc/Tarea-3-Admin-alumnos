@@ -38,7 +38,8 @@
       <td>{{this.semestre}}</td>
       <td>
         <a href="/alumnos/{{this._id}}/edit" class="btn btn-warning btn-sm">Editar</a>
-        <form action="/alumnos/{{this._id}}/delete" method="POST" style="display:inline;">
+        <form action="/alumnos/{{this._id}}" method="POST" style="display:inline;">
+          <input type="hidden" name="_method" value="DELETE">
           <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este alumno?')">Eliminar</button>
         </form>
       </td>

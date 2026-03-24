@@ -2,7 +2,7 @@ const Alumno = require('../models/Alumno');
 
 exports.getAlumnos = async (req, res) => {
   try {
-    const alumnos = await Alumno.find({ isDeleted: false });
+    const alumnos = await Alumno.find({ isDeleted: false }).lean();
     res.render('alumnos/index', { alumnos });
   } catch (error) {
     res.status(500).send('Error al obtener alumnos');
@@ -25,7 +25,7 @@ exports.createAlumno = async (req, res) => {
 
 exports.showEditForm = async (req, res) => {
   try {
-    const alumno = await Alumno.findById(req.params.id);
+    const alumno = await Alumno.findById(req.params.id).lean();
     if (!alumno || alumno.isDeleted) {
       return res.status(404).send('Alumno no encontrado');
     }

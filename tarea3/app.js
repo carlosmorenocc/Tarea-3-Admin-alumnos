@@ -17,7 +17,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/alumnosDB
 // Handlebars
 app.engine('hbs', engine({
   extname: '.hbs',
-  defaultLayout: 'main'
+  defaultLayout: 'main',
+  helpers: {
+    eq: (a, b) => a === b
+  }
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
